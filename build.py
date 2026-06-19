@@ -8,6 +8,11 @@ LANGS = ["en","zh-CN","ja","ko","es","pt","fr","de","ar","hi","th","vi","id","ru
 ACCENT = "#dc2626"  # Racing red
 
 with open(os.path.join(BASE, "brands.json"),"r",encoding="utf-8") as f: brands = json.load(f)
+with open(os.path.join(BASE, "seo_text.json"),"r",encoding="utf-8") as f:
+    _seo = json.load(f)
+    CAR_SEO = _seo["car_desc"]
+    BRAND_SEO = _seo["brand_desc"]
+
 with open(os.path.join(BASE, "cars.json"),"r",encoding="utf-8") as f: cars = json.load(f)
 
 # Light theme with racing red accents
