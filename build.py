@@ -70,7 +70,8 @@ def build_car_page(c, lang):
     loc = COUNTRY_TR.get(lang,{}).get(b["country"],b["country"]) if b else c["brand"]
     car_svg = CAR_SVGS.get(c["body"], CAR_SVGS["Sedan"])
     brand_slug = c["brand_slug"]
-    seo_desc = CAR_SEO.get(lang, CAR_SEO["en"]).replace("{model}", c["model"]).replace("{brand}", c["brand"]).replace("{hp}", str(c["horsepower"])).replace("{fuel}", c["fuel"]).replace("{seats}", str(c["seats"])).replace("{price}", c["price"]).replace("{year}", str(c["year"])).replace("{country}", loc)
+    seo_fuel = FUEL_TR.get(lang, {}).get(c["fuel"], c["fuel"])
+    seo_desc = CAR_SEO.get(lang, CAR_SEO["en"]).replace("{model}", c["model"]).replace("{brand}", c["brand"]).replace("{hp}", str(c["horsepower"])).replace("{fuel}", seo_fuel).replace("{seats}", str(c["seats"])).replace("{price}", c["price"]).replace("{year}", str(c["year"])).replace("{country}", loc)
     model_name = html.escape(c["model"])
     hreflang = "\n".join([f'<link rel="alternate" hreflang="{l}" href="https://{DOMAIN}/{("" if l=="en" else l+"/")}car/{brand_slug}/{c["model"].lower().replace(" ","-")}">' for l in LANGS])
     bc = f'<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"https://{DOMAIN}/{lp}"}},{{"@type":"ListItem","position":2,"name":"{c["brand"]}","item":"https://{DOMAIN}/{lp}brand/{brand_slug}"}},{{"@type":"ListItem","position":3,"name":"{c["model"]}"}}]}}</script>'
