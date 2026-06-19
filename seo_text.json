@@ -1,0 +1,30 @@
+{
+  "car_desc": {
+    "en": "{model} {brand} specs: {hp} HP, {fuel} fuel, {seats} seats, {price}, {year}. Find {model} {brand} specs, fuel economy, engine power, dimensions & more. Country: {country}.",
+    "zh-CN": "{model} {brand} 规格：{hp}马力，{fuel}燃料，{seats}座，{price}，{year}年。查看{model} {brand} 规格、油耗、发动机功率、尺寸等。国家：{country}。",
+    "ja": "{model} {brand} スペック：{hp}馬力、{fuel}燃料、{seats}席、{price}、{year}年。{brand} {model} のスペック、燃費、エンジン出力、寸法を確認。国：{country}。",
+    "ko": "{model} {brand} 사양: {hp}마력, {fuel}연료, {seats}석, {price}, {year}년. {model} {brand} 사양, 연비, 엔진 출력, 크기 확인. 국가: {country}.",
+    "es": "{model} {brand} especificaciones: {hp} CV, {fuel}, {seats} asientos, {price}, {year}. Consulte {model} {brand} especificaciones, consumo, potencia, dimensiones. País: {country}.",
+    "pt": "{model} {brand} especificações: {hp} CV, {fuel}, {seats} lugares, {price}, {year}. Veja {model} {brand} especificações, consumo, potência, dimensões. País: {country}.",
+    "fr": "{model} {brand} spécifications: {hp} CV, {fuel}, {seats} places, {price}, {year}. Consultez {model} {brand} spécifications, consommation, puissance, dimensions. Pays: {country}.",
+    "de": "{model} {brand} Spezifikationen: {hp} PS, {fuel}, {seats} Sitze, {price}, {year}. Finden Sie {model} {brand} Spezifikationen, Verbrauch, Leistung, Abmessungen. Land: {country}.",
+    "ar": "{model} {brand} المواصفات: {hp} حصان، {fuel}، {seats} مقاعد، {price}، {year}. اعثر على {model} {brand} المواصفات، استهلاك الوقود، قوة المحرك، الأبعاد. البلد: {country}.",
+    "hi": "{model} {brand} स्पेक्स: {hp} HP, {fuel} ईंधन, {seats} सीटें, {price}, {year}. {model} {brand} स्पेक्स, माइलेज, इंजन पावर, आयाम देखें। देश: {country}।",
+    "th": "{model} {brand} สเปก: {hp} แรงม้า, {fuel}, {seats} ที่นั่ง, {price}, {year}. ดู {model} {brand} สเปก, อัตราสิ้นเปลือง, กำลังเครื่องยนต์, ขนาด. ประเทศ: {country}.",
+    "vi": "{model} {brand} thông số: {hp} HP, {fuel}, {seats} chỗ, {price}, {year}. Xem {model} {brand} thông số, mức tiêu thụ nhiên liệu, công suất, kích thước. Quốc gia: {country}.",
+    "id": "{model} {brand} spesifikasi: {hp} HP, {fuel}, {seats} kursi, {price}, {year}. Lihat {model} {brand} spesifikasi, konsumsi BBM, tenaga mesin, dimensi. Negara: {country}.",
+    "ru": "{model} {brand} характеристики: {hp} л.с., {fuel}, {seats} мест, {price}, {year}. Найдите {model} {brand} характеристики, расход топлива, мощность, размеры. Страна: {country}."
+  },
+  "brand_desc": {
+    "en": "{brand} car brand — {models} models. Founded {founded}, {country}. Types: {types}. {desc} Find {brand} car models, specs, horsepower, fuel efficiency & prices.",
+    "zh-CN": "{brand} 汽车品牌 — {models} 款车型。创立于{founded}年，{country}。类型：{types}。{desc} 查看{brand}车型、规格、马力、油耗和价格。",
+    "ja": "{brand} 自動車ブランド — {models} モデル。{founded}年設立、{country}。タイプ：{types}。{desc} {brand}の車種、スペック、馬力、燃費、価格を確認。",
+    "ko": "{brand} 자동차 브랜드 — {models} 모델. {founded}년 설립, {country}. 유형: {types}. {desc} {brand} 차량 모델, 사양, 마력, 연비, 가격 확인.",
+    "es": "{brand} marca de autos — {models} modelos. Fundada en {founded}, {country}. Tipos: {types}. {desc} Encuentre modelos {brand}, especificaciones, potencia, consumo y precios.",
+    "pt": "{brand} marca de carros — {models} modelos. Fundada em {founded}, {country}. Tipos: {types}. {desc} Encontre modelos {brand}, especificações, potência, consumo e preços.",
+    "fr": "{brand} marque automobile — {models} modèles. Fondée en {founded}, {country}. Types: {types}. {desc} Trouvez les modèles {brand}, spécifications, puissance, consommation et prix.",
+    "de": "{brand} Automarke — {models} Modelle. Gegründet {founded}, {country}. Typen: {types}. {desc} Finden Sie {brand} Modelle, Spezifikationen, Leistung, Verbrauch und Preise.",
+    "ar": "{brand} علامة سيارات — {models} موديل. تأسست {founded}، {country}. الأنواع: {types}. {desc} اعثر على موديلات {brand}، المواصفات، القوة، استهلاك الوقود والأسعار.",
+    "ru": "{brand} автомобильный бренд — {models} моделей. Основан в {founded}, {country}. Типы: {types}. {desc} Найдите модели {brand}, характеристики, мощность, расход топлива и цены."
+  }
+}
