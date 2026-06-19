@@ -56,6 +56,20 @@ def build_car_page(c, lang):
     bc = f'<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"https://{DOMAIN}/{lp}"}},{{"@type":"ListItem","position":2,"name":"{c["brand"]}","item":"https://{DOMAIN}/{lp}brand/{brand_slug}"}},{{"@type":"ListItem","position":3,"name":"{c["model"]}"}}]}}</script>'
     return f'<!DOCTYPE html><html lang="{lang}"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{c["model"]} — {c["brand"]} {ui["specs"]} | {DOMAIN}</title><meta name="description" content="{c["model"]} {ui["specs"]}. {c["brand"]} - {ui["horsepower"]}: {c["horsepower"]}, {ui["fuel"]}: {c["fuel"]}, {ui["seats"]}: {c["seats"]}, {ui["price"]}: {c["price"]}. {ui["country"]}: {loc}."><meta name="keywords" content="{c["model"]}, {c["model"]} specs, {c["model"]} horsepower, {c["model"]} price, {c["brand"]} {c["model"]}"><style>{CSS}</style>{ADS}{hreflang}</head><body><header><nav><span class="logo">🏎️ {DOMAIN}</span><a href="/{lp}">{ui["home"]}</a><a href="/{lp}brand/{brand_slug}">{c["brand"]}</a>{DROPDOWN}</nav></header><div class="car-detail-hero"><div class="car-name">{model_name}</div><div class="car-brand">{c["brand"]} · {c["body"]}</div></div><div class="car-specs-card"><div class="car-specs-grid"><div class="car-spec"><div class="sv">{c["horsepower"]}</div><div class="sl">{ui["horsepower"]}</div></div><div class="car-spec"><div class="sv">{c["fuel"]}</div><div class="sl">{ui["fuel"]}</div></div><div class="car-spec"><div class="sv">{c["seats"]}</div><div class="sl">{ui["seats"]}</div></div><div class="car-spec"><div class="sv">{c["price"]}</div><div class="sl">{ui["price"]}</div></div><div class="car-spec"><div class="sv">{c["year"]}</div><div class="sl">{ui["year"]}</div></div><div class="car-spec"><div class="sv">{c["body"]}</div><div class="sl">{ui["body"]}</div></div></div></div><footer>&copy; 2026 {DOMAIN}</footer><div class="cookie-consent"><span>{cookie[0]}</span><div class="cookie-btns"><button class="cookie-accent" onclick="this.parentElement.parentElement.style.display=\'none\'" style="background:var(--accent);color:white;border:none;padding:8px 24px;border-radius:4px;cursor:pointer;font-weight:600">{cookie[1]}</button><button class="cookie-decline" onclick="this.parentElement.parentElement.style.display=\'none\'" style="background:#3f3f46;color:white;border:none;padding:8px 24px;border-radius:4px;cursor:pointer">{cookie[2]}</button></div></div>{GOLANG}{BAIDU}{bc}</body></html>'
 
+
+# Fuel type translations
+FUEL_TR = {
+    "zh-CN": {"Gasoline":"汽油","Hybrid":"混动","Electric":"电动","Gasoline/Hybrid":"汽油/混动","Gasoline/Electric":"汽油/电动","Electric/Hybrid":"电动/混动"},
+    "ja": {"Gasoline":"ガソリン","Hybrid":"ハイブリッド","Electric":"電気","Gasoline/Hybrid":"ガソリン/HV"},
+    "ko": {"Gasoline":"가솔린","Hybrid":"하이브리드","Electric":"전기"},
+    "es": {"Gasoline":"Gasolina","Hybrid":"Híbrido","Electric":"Eléctrico"},
+    "pt": {"Gasoline":"Gasolina","Hybrid":"Híbrido","Electric":"Elétrico"},
+    "fr": {"Gasoline":"Essence","Hybrid":"Hybride","Electric":"Électrique"},
+    "de": {"Gasoline":"Benzin","Hybrid":"Hybrid","Electric":"Elektro"},
+    "ar": {"Gasoline":"بنزين","Hybrid":"هايبرد","Electric":"كهرباء"},
+    "ru": {"Gasoline":"Бензин","Hybrid":"Гибрид","Electric":"Электро"},
+}
+
 def build_index(lang):
     ui, lp, cookie = UI.get(lang,UI["en"]), "" if lang=="en" else lang+"/", COOKIE.get(lang,COOKIE["en"])
     cards = ""
@@ -72,7 +86,7 @@ def build_brand_page(b, lang):
     loc = COUNTRY_TR.get(lang,{}).get(b["country"],b["country"])
     model_cards = ""
     for c in b_cars:
-        model_cards += f'<a href="/{lp}car/{c["brand_slug"]}/{c["model"].lower().replace(" ","-")}.html" class="model-card" style="text-decoration:none;color:inherit"><div class="model-name">{html.escape(c["model"])}</div><div class="model-specs"><div><span class="spec-label">{ui["horsepower"]}</span><br><span class="spec-value">{c["horsepower"]}</span></div><div><span class="spec-label">{ui["fuel"]}</span><br><span class="spec-value">{c["fuel"]}</span></div><div><span class="spec-label">{ui["seats"]}</span><br><span class="spec-value">{c["seats"]}</span></div><div><span class="spec-label">{ui["price"]}</span><br><span class="spec-value">{c["price"]}</span></div></div></a>\n'
+        model_cards += f'<a href="/{lp}car/{c["brand_slug"]}/{c["model"].lower().replace(" ","-")}.html" class="model-card" style="text-decoration:none;color:inherit"><div class="model-name">{html.escape(c["model"])}</div><div class="model-specs"><div><span class="spec-label">{ui["horsepower"]}</span><br><span class="spec-value">{c["horsepower"]}</span></div><div><span class="spec-label">{ui["fuel"]}</span><br><span class="spec-value">{FUEL_TR.get(lang,{}).get(c["fuel"],c["fuel"])}</span></div><div><span class="spec-label">{ui["seats"]}</span><br><span class="spec-value">{c["seats"]}</span></div><div><span class="spec-label">{ui["price"]}</span><br><span class="spec-value">{c["price"]}</span></div></div></a>\n'
     hreflang = "\n".join([f'<link rel="alternate" hreflang="{l}" href="https://{DOMAIN}/{("" if l=="en" else l+"/")}brand/{b["slug"]}">' for l in LANGS])
     faq = f'<script type="application/ld+json">{{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{{"@type":"Question","name":"What cars does {b["name"]} make?","acceptedAnswer":{{"@type":"Answer","text":"{b["name"]} makes {len(b_cars)} models including {", ".join(c["model"] for c in b_cars[:3])}."}}}}]}}</script>'
     bc = f'<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"https://{DOMAIN}/{lp}"}},{{"@type":"ListItem","position":2,"name":"{b["name"]}"}}]}}</script>'
