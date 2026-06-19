@@ -126,7 +126,12 @@ urls = [f"https://{DOMAIN}/"]
 for lang in LANGS:
     lp = "" if lang=="en" else lang+"/"
     urls.append(f"https://{DOMAIN}/{lp}")
-    for b in brands: urls.append(f"https://{DOMAIN}/{lp}brand/{b['slug']}")
+    for b in brands:
+        urls.append(f"https://{DOMAIN}/{lp}brand/{b['slug']}")
+    for c in cars:
+        c_slug = c["model"].lower().replace(" ","-")
+        urls.append(f"https://{DOMAIN}/{lp}car/{c['brand_slug']}/{c_slug}")
+
 with open(os.path.join(BASE,"sitemap.xml"),"w") as f:
     f.write('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
     for u in sorted(set(urls)): f.write(f"  <url><loc>{u}</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>\n")
